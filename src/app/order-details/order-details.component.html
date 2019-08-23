@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-6">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>My Transactions</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-nav-list>
+                        <p>{{orderDate | date}}</p>
+                    <mat-list-item *ngFor="let result of results">
+                        <div>
+                        <span>{{result.itemName}} - </span>
+                        <span> {{result.selectedQuantity}} * {{result.price | currency:'INR':true}} = </span>
+                        <span>{{result.price | currency:'INR':true}}</span>
+                        </div>
+                    </mat-list-item>
+                    <span>Total - {{totalAmount | currency:'INR':true }}</span>
+                </mat-nav-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-6">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Account Passbook</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                    <mat-nav-list>
+                            <mat-list-item>
+                                <p matLine>DEBIT - {{totalAmount | currency:'INR':true }}</p>
+                            </mat-list-item>
+                        </mat-nav-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

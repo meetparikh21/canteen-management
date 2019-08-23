@@ -1,0 +1,99 @@
+<div class="mat-elevation-z8">
+	<mat-form-field class="padding-10">
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	</mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+	<!-- Checkbox Column -->
+	<ng-container matColumnDef="select">
+			<th  mat-header-cell *matHeaderCellDef>
+				<mat-checkbox (change)="$event ? masterToggle() : null"
+											[checked]="selection.hasValue() && isAllSelected()"
+											[indeterminate]="selection.hasValue() && !isAllSelected()"
+											[aria-label]="checkboxLabel(row)">
+				</mat-checkbox>
+			</th>
+			<td mat-cell *matCellDef="let element">
+				<mat-checkbox (click)="$event.stopPropagation()"
+											(change)="$event ? selection.toggle(row) : null"
+											[checked]="selection.isSelected(row)"
+											[aria-label]="checkboxLabel(row)">
+				</mat-checkbox>
+			</td>
+	</ng-container>
+
+	<!-- Position Column -->
+	<ng-container matColumnDef="position" >
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+		<td mat-cell *matCellDef="let element" > {{element.position}} </td>
+	</ng-container>
+
+	<!-- Category Column -->
+	<ng-container matColumnDef="category">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header > Category </th>
+		<td mat-cell *matCellDef="let element" > {{element.category}} </td>
+		<td mat-footer-cell *matFooterCellDef> </td>
+	</ng-container>
+
+	<!-- Item Column -->
+	<ng-container matColumnDef="itemName" >
+		<th  mat-header-cell *matHeaderCellDef mat-sort-header> Items </th>
+		<td mat-cell *matCellDef="let element" > {{element.itemName}} </td>
+		<td mat-footer-cell *matFooterCellDef></td>
+	</ng-container>
+
+	<!-- Weight Column -->
+	<ng-container matColumnDef="price">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+		<td mat-cell *matCellDef="let element" > {{element.price | currency}} </td>
+		<td mat-footer-cell *matFooterCellDef></td>
+	</ng-container>
+
+	<!-- Symbol Column -->
+	<ng-container matColumnDef="remainingQuantity">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+		<td mat-cell *matCellDef="let element"> {{element.remainingQuantity }} </td>
+		<td mat-footer-cell *matFooterCellDef></td>
+	</ng-container>
+	
+	<!-- Quantity Column -->
+	<ng-container matColumnDef="selectedQuantity">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+		<td mat-cell *matCellDef="let element" >
+			<div class="quantity-spinner-wrap">
+				<div class="col-md-3">
+					<div class="input-group number-spinner">
+							<!-- <input #quan type="number" class="form-control text-center" [(ngModel)] = "element.selectedQuantity" (change)="keyUp(quan.value,element)"> -->
+						<span class="input-group-btn">
+							<button class="btn btn-default" data-dir="dwn" (click)="onDecrement(element)">
+								<span class="glyphicon glyphicon-minus">-</span>
+							</button>
+						</span>
+						<input #quan type="text" class="form-control text-center" [(ngModel)] = "element.selectedQuantity" (keyup) = keyUp(element)>
+						<span class="input-group-btn">
+							<button class="btn btn-default" data-dir="up" (click)="onIncrement(element)">
+								<span class="glyphicon glyphicon-plus" >+</span>
+							</button>
+						</span>
+					</div> 
+				</div>		
+			</div>
+		</td>
+		<td mat-footer-cell *matFooterCellDef>Total</td>
+	</ng-container>
+
+	<!-- Price Column -->
+	<ng-container matColumnDef="totalPrice">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+		<td mat-cell *matCellDef="let element" > {{ element.totalPrice | currency}}</td>
+		<td mat-footer-cell *matFooterCellDef> {{ getTotalCost() | currency}}  </td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)" ></tr>
+	<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+<button class="btn btn-primary margin-10 float-right" (click) = placeOrder() >Place Order</button>

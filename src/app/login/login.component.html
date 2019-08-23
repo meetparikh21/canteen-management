@@ -1,0 +1,31 @@
+<div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Angular 7 Template-Driven Form Validation</h3>
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                        <div class="form-group">
+                            <label for="employeeId">Employee ID</label>
+                            <input type="text" class="form-control" name="employeeId" [(ngModel)]="model.employeeId" #employeeId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && employeeId.invalid }" required />
+                            <div *ngIf="f.submitted && employeeId.invalid" class="invalid-feedback">
+                                <div *ngIf="employeeId.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+                            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                                <div *ngIf="password.errors.required">Password is required</div>
+                                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-margin">Login</button>
+                            <a routerLink="/app-sign-up" routerLinkActive="active"> Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

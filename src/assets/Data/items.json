@@ -1,0 +1,83 @@
+[
+    {
+    "itemName" : "Poha",
+    "category" : "Snaks",
+    "price" : 8.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity":0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/poha.jpg"
+    },
+    {
+    "itemName" : "Chai",
+    "category" : "Snaks",
+    "price" : 5.00,
+    "remainingQuantity" : 100,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/chai.jpg"
+    },
+    {
+    "itemName" : "Dalia",
+    "category" : "Snaks",
+    "price" : 8.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/poha.jpg"
+    },
+    {
+    "itemName" : "Eggs",
+    "category" : "Snaks",
+    "price" : 6.00,
+    "remainingQuantity" : 150,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/egg.jpg"
+    },
+    {
+    "itemName" : "Thali",
+    "category" : "Lunch",
+    "price" : 60.00,
+    "remainingQuantity" : 100,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/thali.png"
+    },
+    {
+    "itemName" : "Noodels",
+    "category" : "Chinese",
+    "price" : 35.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/noodles.jpg"
+    },
+    {
+    "itemName" : "Manchurian",
+    "category" : "Chinese",
+    "price" : 35.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/manchurian.jpg"
+    },
+    {
+    "itemName" : "Dosa",
+    "category" : "South Indian",
+    "price" : 35.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/dosa.jpg"
+    },
+    {
+    "itemName" : "Idli",
+    "category" : "South Indian",
+    "price" : 35.00,
+    "remainingQuantity" : 50,
+    "selectedQuantity": 0,
+    "totalPrice":0,
+    "imageUrl": "./assets/Images/idli.jpg"
+    }
+]
